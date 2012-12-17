@@ -1,24 +1,24 @@
 package net.staniscia.odynodatabus.tests;
 
-import net.staniscia.odynodatabus.Envelop;
+import net.staniscia.odynodatabus.msg.Envelop;
 import net.staniscia.odynodatabus.filters.Filter;
 
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import net.staniscia.odynodatabus.DataDistributionService;
-import net.staniscia.odynodatabus.DataPublisher;
-import net.staniscia.odynodatabus.DataSubscriber;
-import net.staniscia.odynodatabus.Envelop;
+import net.staniscia.odynodatabus.DataBusService;
+import net.staniscia.odynodatabus.Publisher;
+import net.staniscia.odynodatabus.Subscriber;
+import net.staniscia.odynodatabus.msg.Envelop;
 
-public class StubDataDistributionService implements DataDistributionService {
+public class StubDataDistributionService implements DataBusService {
 
-	List<DataSubscriber<?, ?>> listeners = Collections.synchronizedList(new LinkedList<DataSubscriber<?, ?>>());
+	List<Subscriber<?, ?>> listeners = Collections.synchronizedList(new LinkedList<Subscriber<?, ?>>());
 
-	public <T extends Serializable> DataPublisher<T> getDataPublisher(Class<T> objectType) {
+	public <T extends Serializable> Publisher<T> getDataPublisher(Class<T> objectType) {
 
-		return new DataPublisher<T>() {
+		return new Publisher<T>() {
 			public void publish(Envelop<T> data) {
 				fireListeners(data);
 			}
@@ -28,7 +28,7 @@ public class StubDataDistributionService implements DataDistributionService {
 	@SuppressWarnings("rawtypes")
 	private <T extends Serializable> void fireListeners(Envelop data) {
 		synchronized (listeners) {
-			for (DataSubscriber<?, ?> listener : listeners) {
+			for (Subscriber<?, ?> listener : listeners) {
 				Filter f = listener.getFilter();
 				if (data.getContentType().isAssignableFrom(f.getManagedType()) ) {
 					if (f.passes(data.getContent())) {
@@ -40,12 +40,12 @@ public class StubDataDistributionService implements DataDistributionService {
 	}
 
 	public <T extends Serializable> boolean registerSubscriber(
-			DataSubscriber<T, ? extends Filter<T>> subscriver) {
+			Subscriber<T, ? extends Filter<T>> subscriver) {
 		return listeners.add(subscriver);
 	}
 
 	public <T extends Serializable> boolean unRegisterSubscriber(
-			DataSubscriber<T, ? extends Filter<T>> subscriver) {
+			Subscriber<T, ? extends Filter<T>> subscriver) {
 		return listeners.remove(subscriver);
 	}
 

@@ -4,13 +4,14 @@ import java.util.Collections;
 import java.util.Vector;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.logging.Logger;
+import net.staniscia.odynodatabus.DataBusServiceStatus;
 
-import net.staniscia.odynodatabus.DataSubscriber;
-import net.staniscia.odynodatabus.Envelop;
+import net.staniscia.odynodatabus.Subscriber;
+import net.staniscia.odynodatabus.msg.Envelop;
 import net.staniscia.odynodatabus.filters.Filter;
 import net.staniscia.odynodatabus.filters.FilterFactory;
 
-public class Validatore implements DataSubscriber<PersonBeanTest, Filter<PersonBeanTest>> {
+public class Validatore implements Subscriber<PersonBeanTest, Filter<PersonBeanTest>> {
 	private static final Logger LOG = Logger.getLogger(Validatore.class.getName()); 
 
 	
@@ -35,5 +36,10 @@ public class Validatore implements DataSubscriber<PersonBeanTest, Filter<PersonB
 	public Filter<PersonBeanTest> getFilter() {
 		return FilterFactory.makeNoFilter(new PersonBeanTest());
 	}
+
+    @Override
+    public void onChangeSystemStatus(DataBusServiceStatus status) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

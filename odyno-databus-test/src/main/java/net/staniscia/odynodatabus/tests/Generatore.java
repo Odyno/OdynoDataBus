@@ -9,16 +9,16 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-import net.staniscia.odynodatabus.DataDistributionService;
-import net.staniscia.odynodatabus.DataPublisher;
-import net.staniscia.odynodatabus.Envelop;
+import net.staniscia.odynodatabus.DataBusService;
+import net.staniscia.odynodatabus.Publisher;
+import net.staniscia.odynodatabus.msg.Envelop;
 import net.staniscia.odynodatabus.msg.SerializableMessage;
 
 public class Generatore implements Runnable {
 	
 	private static final Logger LOG = Logger.getLogger(Generatore.class.getName()); 
 
-	DataDistributionService service;
+	DataBusService service;
 	Validatore vld;
 	ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
 
@@ -53,7 +53,7 @@ public class Generatore implements Runnable {
 	public void run() {
 		final PersonBeanTest input = createInput();
 		vld.verifyObject(input);
-		DataPublisher<PersonBeanTest> publicher = service
+		Publisher<PersonBeanTest> publicher = service
 				.getDataPublisher(PersonBeanTest.class);
 		SerializableMessage<PersonBeanTest> a = new SerializableMessage<PersonBeanTest>(input);
 		LOG.info("[G] - Generate Data: "+a.getTimeOfOccurence());
