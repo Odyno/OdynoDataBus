@@ -1,4 +1,4 @@
 OdynoDataBus
 ============
 
-Java DataBus for OSGi aplication
+Java DataBus for OSGi application. TODO more info

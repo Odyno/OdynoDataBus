@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<!-- ********************************************************** -->
+	<!-- PARENT POM -->
+	<!-- ********************************************************** -->
+	<parent>
+		<groupId>net.staniscia</groupId>
+		<artifactId>sw-staniscia</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+
+	<!-- ********************************************************** -->
+	<!-- MY POM -->
+	<!-- ********************************************************** -->
+
+	<groupId>net.staniscia.as</groupId>
+	<artifactId>odyno-databus-mem</artifactId>
+	<name>odyno-databus-mem</name>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.staniscia.as</groupId>
+			<artifactId>odyno-databus-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>bundle</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>
