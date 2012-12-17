@@ -1,9 +1,10 @@
 package net.staniscia.odynodatabus;
 
+import net.staniscia.odynodatabus.msg.Envelop;
 import java.io.Serializable;
 
 
-public interface DataPublisher<T extends Serializable> {
+public interface Publisher<T extends Serializable> {
 
 	/**
 	 * Publish data

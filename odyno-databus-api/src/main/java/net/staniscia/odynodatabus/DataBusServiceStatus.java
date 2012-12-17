@@ -3,7 +3,7 @@ package net.staniscia.odynodatabus;
 /**
  * Status Notifyed on DataSubscriber
  */
-public enum DataDistributionServiceStatus {
+public enum DataBusServiceStatus {
     BOOTING,  
     RUNNING,
     DESTROY,

@@ -1,5 +1,6 @@
 package net.staniscia.odynodatabus;
 
+import net.staniscia.odynodatabus.msg.Envelop;
 import java.io.Serializable;
 
 import net.staniscia.odynodatabus.filters.Filter;
@@ -12,7 +13,7 @@ import net.staniscia.odynodatabus.filters.Filter;
  * @param <D> data type
  * @param <F> filter applayed on data for filtering the occurrence of data 
  */
-public interface DataSubscriber<D extends Serializable, F extends Filter<D>> {
+public interface Subscriber<D extends Serializable, F extends Filter<D>> {
 
 	/**
 	 * handle when the object receive message in according of filter defined in
@@ -35,7 +36,7 @@ public interface DataSubscriber<D extends Serializable, F extends Filter<D>> {
          * 
          * @param status 
          */
-        void onChangeSystemStatus(final DataDistributionServiceStatus status);
+        void onChangeSystemStatus(final DataBusServiceStatus status);
 
 
 }

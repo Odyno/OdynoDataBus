@@ -1,7 +1,5 @@
 package net.staniscia.odynodatabus.msg;
 
-import net.staniscia.odynodatabus.Envelop;
-
 /**
  * Manage simple String message
  */

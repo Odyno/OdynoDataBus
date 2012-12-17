@@ -1,7 +1,6 @@
 package net.staniscia.odynodatabus.msg;
 
 import java.io.Serializable;
-import net.staniscia.odynodatabus.Envelop;
 
 /**
  * Manage all Serializable object

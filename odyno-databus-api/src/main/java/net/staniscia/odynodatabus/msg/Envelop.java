@@ -1,4 +1,4 @@
-package net.staniscia.odynodatabus;
+package net.staniscia.odynodatabus.msg;
 
 import java.io.Serializable;
 

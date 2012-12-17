@@ -2,8 +2,8 @@ package net.staniscia.odynodatabus.imp.mem;
 
 import java.io.Serializable;
 
-import net.staniscia.odynodatabus.DataPublisher;
-import net.staniscia.odynodatabus.Envelop;
+import net.staniscia.odynodatabus.Publisher;
+import net.staniscia.odynodatabus.msg.Envelop;
 
 /**
  * Simple template
@@ -12,17 +12,17 @@ import net.staniscia.odynodatabus.Envelop;
  *
  * @param <T>
  */
-public class MemDataPublisher<T extends Serializable> implements DataPublisher<T> {
+public class MemDataPublisher<T extends Serializable> implements Publisher<T> {
 
-	private MemoryDDS  dds;
+	private MemoryDataBus  dds;
 
-	public MemDataPublisher(MemoryDDS dds) {
+	public MemDataPublisher(MemoryDataBus dds) {
 		super();
 		this.dds = dds;
 	}
 
 	public void publish(Envelop<T> data) {
-		dds.notifyData(data);
+		dds.submitData(data);
 	}
 
 }
