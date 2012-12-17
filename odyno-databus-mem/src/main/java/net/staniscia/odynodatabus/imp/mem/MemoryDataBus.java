@@ -53,7 +53,7 @@ public class MemoryDataBus implements DataBusService, Runnable {
     /**
      * Shutdown of component
      */
-    public void stop() {
+    public void destroy() {
         swithMyStatus(DataBusServiceStatus.DESTROY);
         executor.shutdownNow();
     }
