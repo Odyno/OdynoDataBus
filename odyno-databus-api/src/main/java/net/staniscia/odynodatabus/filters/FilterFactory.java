@@ -1,5 +1,8 @@
 package net.staniscia.odynodatabus.filters;
 
+/**
+ * Filter Factory for filters
+ */
 public class FilterFactory {
 	
 	 public static final <T> Filter<T> makeNoFilter(T obj){

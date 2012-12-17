@@ -1,33 +1,67 @@
 package net.staniscia.odynodatabus.msg;
 
 import java.io.Serializable;
-
 import net.staniscia.odynodatabus.Envelop;
 
+/**
+ * Manage all Serializable object
+ *
+ * @param <T>
+ */
 public class SerializableMessage<T extends Serializable> implements Envelop<T> {
 
-	private long time = System.currentTimeMillis();
+    private long time = System.currentTimeMillis();
+    private static final long serialVersionUID = 5759583007849201371L;
+    private T dataObject;
 
-	private static final long serialVersionUID = 5759583007849201371L;
+    /**
+     * the costructor with Object to send
+     *
+     * @param dataObject
+     */
+    public SerializableMessage(T dataObject) {
+        super();
+        this.dataObject = dataObject;
+    }
 
-	private T dataObject;
+    @Override
+    public long getTimeOfOccurence() {
+        return time;
+    }
 
-	public SerializableMessage(T dataObject) {
-		super();
-		this.dataObject = dataObject;
-	}
+    @Override
+    public Class<T> getContentType() {
+        return (Class<T>) dataObject.getClass();
+    }
 
-	public long getTimeOfOccurence() {
-		return time;
-	}
+    @Override
+    public T getContent() {
+        return dataObject;
+    }
 
-	@SuppressWarnings("unchecked")
-	public Class<T> getContentType() {
-		return (Class<T>) dataObject.getClass();
-	}
-
-	public T getContent() {
-		return dataObject;
-	}
-
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("SerializableMessage [");
+        builder.append("getContent=");
+        builder.append(getContent());
+        builder.append(", getContentType=");
+        builder.append(getContentType());
+        builder.append(", getTimeOfOccurence=");
+        builder.append(getTimeOfOccurence());
+        builder.append(", dataObject=");
+        builder.append(dataObject);
+        builder.append(", serialVersionUID=");
+        builder.append(serialVersionUID);
+        builder.append(", time=");
+        builder.append(time);
+        builder.append(", getClass=");
+        builder.append(getClass());
+        builder.append(", hashCode=");
+        builder.append(hashCode());
+        builder.append(", toString=");
+        builder.append(toString());
+        builder.append("]");
+        return builder.toString();
+    }
 }
