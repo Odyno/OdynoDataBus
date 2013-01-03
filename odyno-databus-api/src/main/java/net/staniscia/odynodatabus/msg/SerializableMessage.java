@@ -3,7 +3,7 @@ package net.staniscia.odynodatabus.msg;
 import java.io.Serializable;
 
 /**
- * Manage all Serializable object
+ * Manage all object Serializable
  *
  * @param <T>
  */
@@ -14,7 +14,7 @@ public class SerializableMessage<T extends Serializable> implements Envelop<T> {
     private T dataObject;
 
     /**
-     * the costructor with Object to send
+     * the constructor with Object to send
      *
      * @param dataObject
      */
@@ -28,7 +28,8 @@ public class SerializableMessage<T extends Serializable> implements Envelop<T> {
         return time;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Class<T> getContentType() {
         return (Class<T>) dataObject.getClass();
     }

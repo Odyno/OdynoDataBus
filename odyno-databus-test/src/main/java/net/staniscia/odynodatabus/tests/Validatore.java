@@ -1,7 +1,5 @@
 package net.staniscia.odynodatabus.tests;
 
-import java.util.Collections;
-import java.util.Vector;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.logging.Logger;
 import net.staniscia.odynodatabus.DataBusServiceStatus;
@@ -11,35 +9,35 @@ import net.staniscia.odynodatabus.msg.Envelop;
 import net.staniscia.odynodatabus.filters.Filter;
 import net.staniscia.odynodatabus.filters.FilterFactory;
 
-public class Validatore implements Subscriber<PersonBeanTest, Filter<PersonBeanTest>> {
+public class Validatore implements Subscriber<String, Filter<String>> {
 	private static final Logger LOG = Logger.getLogger(Validatore.class.getName()); 
 
 	
-	private ArrayBlockingQueue<PersonBeanTest> buffer=new ArrayBlockingQueue<PersonBeanTest>(1000);
+	private ArrayBlockingQueue<String> buffer=new ArrayBlockingQueue<String>(1000);
 
-	public void verifyObject(PersonBeanTest input) {
+	public void verifyObject(String input) {
         buffer.offer(input)		;
 	}
 
 	@Override
-	public void handle(Envelop<PersonBeanTest> dataSample) {
-		PersonBeanTest obj = dataSample.getContent();
-		PersonBeanTest offer = buffer.poll();
+	public void handle(Envelop<String> dataSample) {
+		String obj = dataSample.getContent();
+		String offer = buffer.poll();
 		if (obj.equals(offer)){
-			LOG.fine("[V] - MSG "+dataSample.getTimeOfOccurence() + " is ok!");
+			LOG.fine("[V] - "+obj+" is ok!");
 		}else{
 			LOG.warning("[ERROR] - Aspettavo "+offer+" ho ricevuto "+obj);
 		}
 	}
 
 	@Override
-	public Filter<PersonBeanTest> getFilter() {
-		return FilterFactory.makeNoFilter(new PersonBeanTest());
+	public Filter<String> getFilter() {
+		return FilterFactory.makeNoFilter("");
 	}
 
     @Override
     public void onChangeSystemStatus(DataBusServiceStatus status) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    	LOG.fine("[V] - Status is "+status);
     }
 
 }

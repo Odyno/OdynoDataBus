@@ -10,14 +10,14 @@ public final class StringMessage implements Envelop<String> {
     private String treasure;
 
     /**
-     * The costructor with message to send
+     * The constructor with message to send
      * @param string 
      */
     public StringMessage(String string) {
         timeOfOccurence = System.currentTimeMillis();
         this.treasure = string;
     }
-
+    
     
     @Override
     public long getTimeOfOccurence() {
