@@ -1,6 +1,19 @@
-/**
- * Simple implementation of DataBus
- */
+/*  
+    Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License, version 2, as
+    published by the Free Software Foundation.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 package net.staniscia.odynodatabus.imp.mem;
 
 import java.io.Serializable;
@@ -21,49 +34,72 @@ import net.staniscia.odynodatabus.Subscriber;
 import net.staniscia.odynodatabus.msg.Envelop;
 import net.staniscia.odynodatabus.filters.Filter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MemoryDataBus.
+ */
 public class MemoryDataBus implements DataBusService, Runnable {
 
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = Logger.getLogger(MemoryDataBus.class.getName());
+    
+    /** The Constant TIME_LIMIT_TO_ATTENDS. */
     private static final long TIME_LIMIT_TO_ATTENDS = 1;
+    
+    /** The subscribers. */
     private final List<Subscriber<?, ?>> subscribers = new LinkedList<Subscriber<?, ?>>();
+    
+    /** The memorydata. */
     private final LinkedBlockingQueue<Envelop<?>> memorydata = new LinkedBlockingQueue<Envelop<?>>();
+    
+    /** The executor. */
     private final ExecutorService executor = Executors.newCachedThreadPool();
+    
+    /** The rwloa lock. */
     private final ReadWriteLock rwloaLock = new ReentrantReadWriteLock();
+    
+    /** The read. */
     private final Lock read = rwloaLock.readLock();
+    
+    /** The write. */
     private final Lock write = rwloaLock.writeLock();
+    
+    /** The my status. */
     private DataBusServiceStatus myStatus;
 
     /**
-     * Memory implementation of odyno-databus-api
+     * Memory implementation of odyno-databus-api.
      */
     public MemoryDataBus() {
         super();
-          swithMyStatus(DataBusServiceStatus.BOOTING);
-
+        swithMyStatus(DataBusServiceStatus.BOOTING);
+        LOGGER.log(Level.FINEST, "Startup OdynoDataBus");
     }
 
     /**
-     * Init of component
+     * Init of component.
      */
     public void init() {
         executor.execute(this);
-                  
+        LOGGER.log(Level.FINEST, "Init OdynoDataBus");
     }
 
     /**
-     * Shutdown of component
+     * Shutdown of component.
      */
     public void destroy() {
         swithMyStatus(DataBusServiceStatus.DESTROY);
         executor.shutdownNow();
+        LOGGER.log(Level.FINEST, "Destory OdynoDataBus");
     }
 
     /**
-     * Function to use when someone want submit some data on databus
+     * Function to use when someone want submit some data on databus.
      *
      * @param objectType to submit
      */
     public void submitData(final Envelop<?> objectType) {
+    	LOGGER.log(Level.FINEST, "Submit data on OdynoDataBus");
         executor.execute(new Runnable() {
             public void run() {
                 memorydata.add(objectType);
@@ -71,13 +107,21 @@ public class MemoryDataBus implements DataBusService, Runnable {
         });
     }
 
+    /* (non-Javadoc)
+     * @see net.staniscia.odynodatabus.DataBusService#getDataPublisher(java.lang.Class)
+     */
     @Override
     public <T extends Serializable> MemDataPublisher<T> getDataPublisher(Class<T> objectType) {
+    	LOGGER.log(Level.FINEST, "Returned one publisher on OdynoDataBus");
         return new MemDataPublisher<T>(this);
     }
 
+    /* (non-Javadoc)
+     * @see net.staniscia.odynodatabus.DataBusService#registerSubscriber(net.staniscia.odynodatabus.Subscriber)
+     */
     @Override
     public <T extends Serializable> boolean registerSubscriber(Subscriber<T, ? extends Filter<T>> subscriver) {
+    	LOGGER.log(Level.FINEST, "request Subscription  on OdynoDataBus");
         subscriver.onChangeSystemStatus(DataBusServiceStatus.BOOTING);
         write.lock();
         try {
@@ -89,8 +133,12 @@ public class MemoryDataBus implements DataBusService, Runnable {
         }
     }
 
+    /* (non-Javadoc)
+     * @see net.staniscia.odynodatabus.DataBusService#unRegisterSubscriber(net.staniscia.odynodatabus.Subscriber)
+     */
     @Override
     public <T extends Serializable> boolean unRegisterSubscriber(Subscriber<T, ? extends Filter<T>> subscriver) {
+    	LOGGER.log(Level.FINEST, "request unSubscription  on OdynoDataBus");
         write.lock();
         try {
             subscriver.onChangeSystemStatus(DataBusServiceStatus.DESTROY);
@@ -101,7 +149,7 @@ public class MemoryDataBus implements DataBusService, Runnable {
     }
 
     /**
-     * none
+     * none.
      */
     @Override
     public void run() {
@@ -128,11 +176,17 @@ public class MemoryDataBus implements DataBusService, Runnable {
         }
     }
 
+    /**
+     * Notify at listner.
+     *
+     * @param listener the listener
+     * @param data the data
+     */
     private void notifyAtListner(final Subscriber<?, ?> listener, final Envelop data) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                Filter f = listener.getFilter();
+                final Filter f = listener.getFilter();
                 LOGGER.log(Level.FINEST, "\ndata: {0}data.getDataType(): {1} listener: {2} f.getManagedType: {3} isAssignagle: {4} isEquals: {5}", new Object[]{data, data.getContentType(), listener, f.getManagedType(), data.getContentType().isAssignableFrom(f.getManagedType()), data.getContentType().equals(f.getManagedType())});
                 if (data.getContentType().isAssignableFrom(f.getManagedType())) {
                     Serializable content = data.getContent();
@@ -144,6 +198,11 @@ public class MemoryDataBus implements DataBusService, Runnable {
         });
     }
 
+    /**
+     * Swith my status.
+     *
+     * @param dataDistributionServiceStatus the data distribution service status
+     */
     private void swithMyStatus(final DataBusServiceStatus dataDistributionServiceStatus) {
         for (final Subscriber<?, ?> listener : subscribers) {
             executor.execute(new Runnable() {

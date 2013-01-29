@@ -2,18 +2,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>net.staniscia</groupId>
-        <artifactId>sw-staniscia</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>net.staniscia</groupId>
+		<artifactId>ast-parent-pom</artifactId>
+		<version>0.0.3-SNAPSHOT</version>
+	</parent>
 	
 
 
     <groupId>net.staniscia.as</groupId>
     <artifactId>odyno-databus-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>odyno-databus-test</name>
+    <name>Odyno DataBus - Test</name>
     <packaging>bundle</packaging>
 	
     <dependencies>

@@ -5,10 +5,10 @@
 	<!-- ********************************************************** -->
 	<!-- PARENT POM -->
 	<!-- ********************************************************** -->
-	<parent>
+        <parent>
 		<groupId>net.staniscia</groupId>
-		<artifactId>sw-staniscia</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>ast-parent-pom</artifactId>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
 	<!-- ********************************************************** -->
@@ -17,10 +17,11 @@
 
 	<groupId>net.staniscia.as</groupId>
 	<artifactId>odyno-databus-api</artifactId>
-	<name>odyno-databus-api</name>
+	<name>Odyno DataBus - API</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>bundle</packaging>
-	<description>Semplice libreria per la gestione di un databus.Implementa il pattern di publish-subscribe con la possibilita' di filtrare i dati.</description>
+	<description>Libreria per la gestione di un databus. Il databus è un componente che mette a disposizione un bus virtuale su cui affidare i propri dati e su cui è possibile mettersi in ascolpo per recuperare dati.
+ Viene implemento il pattern di publish-subscribe con la possibilita' di filtrare i dati non solo per tipologie ma anche per subcategorie di tipologie.</description>
 
 	<dependencies>
 		<dependency>
@@ -32,4 +33,5 @@
 	</dependencies>
 
 
+	<url>www.staniscia.net/OdynoDataBus</url>
 </project>

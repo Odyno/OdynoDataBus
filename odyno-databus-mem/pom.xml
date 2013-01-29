@@ -8,8 +8,8 @@
 	<!-- ********************************************************** -->
 	<parent>
 		<groupId>net.staniscia</groupId>
-		<artifactId>sw-staniscia</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>ast-parent-pom</artifactId>
+		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
 
@@ -19,7 +19,7 @@
 
 	<groupId>net.staniscia.as</groupId>
 	<artifactId>odyno-databus-mem</artifactId>
-	<name>odyno-databus-mem</name>
+	<name>Odyno DataBus - Memory</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
@@ -45,4 +45,5 @@
 		</dependency>
 	</dependencies>
 
+	<url>www.staniscia.net/OdynoDataBus</url>
 </project>
