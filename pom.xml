@@ -23,10 +23,17 @@
     </properties>
 
     <modules>
-        <module>../odyno-databus-api</module>
-        <module>../odyno-databus-mem</module>
-        <module>../odyno-databus-test</module>
+        <module>odyno-databus-api</module>
+        <module>odyno-databus-mem</module>
+        <module>odyno-databus-test</module>
     </modules>
+
+<distributionManagement>
+<site>
+<id>tmp</id>
+<url>file://tmp/</url>
+</site>
+</distributionManagement>
 
 
 </project>
