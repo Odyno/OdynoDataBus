@@ -28,12 +28,27 @@
         <module>odyno-databus-test</module>
     </modules>
 
-<distributionManagement>
-<site>
-<id>tmp</id>
-<url>file://tmp/</url>
-</site>
-</distributionManagement>
+	<distributionManagement>
+		<downloadUrl>http://www.staniscia.net/repository/release</downloadUrl>
+		<site>
+			<id>ftp-repository-site</id>
+			<name>staniscia.net Website</name>
+			<url>ftp://ftp.staniscia.net/htdocs/mvn-sites/</url>
+		</site>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>ftp-repository-stable</id>
+			<url>ftp://ftp.staniscia.net/htdocs/repository/release</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>true</uniqueVersion>
+			<id>ftp-repository-snapshot</id>
+			<name>Propellors Snapshots</name>
+			<url>ftp://ftp.staniscia.net/htdocs/repository/snapshot</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 
 
 </project>
