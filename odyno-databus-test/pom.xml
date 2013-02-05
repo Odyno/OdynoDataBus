@@ -2,11 +2,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
     <modelVersion>4.0.0</modelVersion>
+
+	<!-- ********************************************************** -->
+	<!-- PARENT POM -->
+
 	<parent>
 		<groupId>net.staniscia</groupId>
 		<artifactId>ast-parent-pom</artifactId>
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
+
+    <repositories>
+      <repository>
+        <id>staniscia.net-release</id>
+        <url>http://www.staniscia.net/repository/release</url>
+      </repository>
+      <repository>
+        <id>staniscia.net-snapshot</id>
+        <url>http://www.staniscia.net/repository/snapshot</url>
+      </repository>
+    </repositories>
+	<!-- ********************************************************** -->
 	
 
 

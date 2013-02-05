@@ -18,6 +18,17 @@
 
     <name>odyno-databus-all</name>
 
+    <repositories>
+      <repository>
+        <id>staniscia.net-release</id>
+        <url>http://www.staniscia.net/repository/release</url>
+      </repository>
+      <repository>
+        <id>staniscia.net-snapshot</id>
+        <url>http://www.staniscia.net/repository/snapshot</url>
+      </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -28,15 +39,5 @@
         <module>odyno-databus-test</module>
     </modules>
 
-	<distributionManagement>
-		<repository>
-			<id>ast-repository-stable</id>
-			<url>http://www.staniscia.net/repository/release</url>
-		</repository>
-		<snapshotRepository>
-			<id>ast-repository-snapshot</id>
-			<url>http://www.staniscia.net/repository/snapshot</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 </project>
