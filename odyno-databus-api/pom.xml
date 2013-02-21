@@ -1,38 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
+	
 	<!-- ********************************************************** -->
 	<!-- PARENT POM -->
 	<!-- ********************************************************** -->
-        <parent>
+	<parent>
 		<groupId>net.staniscia</groupId>
 		<artifactId>ast-parent-pom</artifactId>
-		<version>0.0.3-SNAPSHOT</version>
+		<version>0.1.0</version>
 	</parent>
-
-    <repositories>
-      <repository>
-        <id>staniscia.net-release</id>
-        <url>http://www.staniscia.net/repository/release</url>
-      </repository>
-      <repository>
-        <id>staniscia.net-snapshot</id>
-        <url>http://www.staniscia.net/repository/snapshot</url>
-      </repository>
-    </repositories>
-
 	<!-- ********************************************************** -->
-	<!-- MY POM -->
-	<!-- ********************************************************** -->
-
+	
 	<groupId>net.staniscia.as</groupId>
 	<artifactId>odyno-databus-api</artifactId>
 	<name>Odyno DataBus - API</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>bundle</packaging>
 	<description>Libreria per la gestione di un databus. Il databus è un componente che mette a disposizione un bus virtuale su cui affidare i propri dati e su cui è possibile mettersi in ascolpo per recuperare dati.
- Viene implemento il pattern di publish-subscribe con la possibilita' di filtrare i dati non solo per tipologie ma anche per subcategorie di tipologie.</description>
+		Viene implemento il pattern di publish-subscribe con la possibilita' di filtrare i dati non solo per tipologie ma anche per subcategorie di tipologie.</description>
 
 	<dependencies>
 		<dependency>
@@ -42,7 +28,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-
-	<url>www.staniscia.net/OdynoDataBus</url>
+	
 </project>

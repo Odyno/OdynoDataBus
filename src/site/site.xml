@@ -9,6 +9,19 @@
     <fluidoSkin>
       <topBarEnabled>true</topBarEnabled>
       <sideBarEnabled>false</sideBarEnabled>
+      <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+      <gitHub>
+        <projectId>Odyno/OdynoDataBus</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+        <ribbonColor>green</ribbonColor>
+      </gitHub>
+      <twitter>
+        <user>alexstani</user>
+        <showUser>true</showUser>
+        <showFollowers>true</showFollowers>
+      </twitter>
+      <facebookLike />
+      <googlePlusOne />
     </fluidoSkin>
   </custom>
   <body>
