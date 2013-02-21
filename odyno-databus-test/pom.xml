@@ -8,7 +8,7 @@
     <parent>
         <groupId>net.staniscia</groupId>
         <artifactId>ast-parent-pom</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.1.0</version>
     </parent>
     <!-- ********************************************************** -->
     
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>net.staniscia.as</groupId>
             <artifactId>odyno-databus-mem</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

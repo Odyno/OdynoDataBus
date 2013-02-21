@@ -16,7 +16,7 @@
 	<groupId>net.staniscia.as</groupId>
 	<artifactId>odyno-databus-mem</artifactId>
 	<name>Odyno DataBus - Memory</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>bundle</packaging>
 	<url>www.staniscia.net/OdynoDataBus</url>
 	

@@ -14,9 +14,9 @@
   
   <groupId>net.staniscia.as</groupId>
   <artifactId>odyno-databus-all</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>pom</packaging>
-  <name>odyno-databus-all</name>
+  <name>Odyno Databus</name>
   
   <url>www.staniscia.net/OdynoDataBus</url>
   <organization>
