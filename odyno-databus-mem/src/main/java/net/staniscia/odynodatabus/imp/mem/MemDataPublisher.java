@@ -55,7 +55,11 @@ public class MemDataPublisher<T extends Serializable> implements Publisher<T> {
 	 * @see net.staniscia.odynodatabus.Publisher#publish(net.staniscia.odynodatabus.msg.Envelop)
 	 */
 	public void publish(final Envelop<T> data) throws PublishException{
-		LOGGER.log(Level.FINEST, "request publish data");
+	if (data==null || data.getContent()== null){
+            throw new IllegalArgumentException("content is Null");
+        }	
+            LOGGER.log(Level.FINEST, "request publish data");
+                
 		dds.submitData(data);
 	}
 

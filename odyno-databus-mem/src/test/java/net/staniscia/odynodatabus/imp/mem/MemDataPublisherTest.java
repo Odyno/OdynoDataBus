@@ -26,6 +26,7 @@ import static org.mockito.Mockito.*;
  * @author Alessandro Staniscia
  */
 public class MemDataPublisherTest {
+    private MemoryDataBus dds;
     
     public MemDataPublisherTest() {
     }
@@ -40,6 +41,7 @@ public class MemDataPublisherTest {
     
     @Before
     public void setUp() {
+          dds = mock(MemoryDataBus.class);
     }
     
     @After
@@ -50,9 +52,8 @@ public class MemDataPublisherTest {
      * Test of publish method, of class MemDataPublisher.
      * @throws PublishException 
      */
-    @Test
+    @Test(expected=IllegalArgumentException.class)
     public void testPublishNullObject() throws PublishException {
-        MemoryDataBus dds = mock(MemoryDataBus.class);
         MemDataPublisher instance = new MemDataPublisher<Serializable>(dds);
         instance.publish(null);
     }
@@ -64,10 +65,10 @@ public class MemDataPublisherTest {
      */
     @Test
     public void testPublishObject() throws PublishException {
-    	
-        MemoryDataBus dds = mock(MemoryDataBus.class);
         MemDataPublisher instance = new MemDataPublisher<String>(dds);
-		instance.publish(new StringMessage("ciao Come VA?"));
+        StringMessage envelop = new StringMessage("ciao Come VA?");
+	instance.publish(envelop);
+        verify(dds).submitData(envelop);
     }
     
     /**

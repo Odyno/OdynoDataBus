@@ -1,22 +1,23 @@
 /*  
-    Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
+ Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License, version 2, as
+ published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 package net.staniscia.odynodatabus.imp.mem;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -40,31 +41,41 @@ import net.staniscia.odynodatabus.filters.Filter;
  */
 public class MemoryDataBus implements DataBusService, Runnable {
 
-    /** The Constant LOGGER. */
+    /**
+     * The Constant LOGGER.
+     */
     private static final Logger LOGGER = Logger.getLogger(MemoryDataBus.class.getName());
-    
-    /** The Constant TIME_LIMIT_TO_ATTENDS. */
+    /**
+     * The Constant TIME_LIMIT_TO_ATTENDS.
+     */
     private static final long TIME_LIMIT_TO_ATTENDS = 1;
-    
-    /** The subscribers. */
+    /**
+     * The subscribers.
+     */
     private final List<Subscriber<?, ?>> subscribers = new LinkedList<Subscriber<?, ?>>();
-    
-    /** The memorydata. */
+    /**
+     * The memorydata.
+     */
     private final LinkedBlockingQueue<Envelop<?>> memorydata = new LinkedBlockingQueue<Envelop<?>>();
-    
-    /** The executor. */
+    /**
+     * The executor.
+     */
     private final ExecutorService executor = Executors.newCachedThreadPool();
-    
-    /** The rwloa lock. */
+    /**
+     * The rwloa lock.
+     */
     private final ReadWriteLock rwloaLock = new ReentrantReadWriteLock();
-    
-    /** The read. */
+    /**
+     * The read.
+     */
     private final Lock read = rwloaLock.readLock();
-    
-    /** The write. */
+    /**
+     * The write.
+     */
     private final Lock write = rwloaLock.writeLock();
-    
-    /** The my status. */
+    /**
+     * The my status.
+     */
     private DataBusServiceStatus myStatus;
 
     /**
@@ -99,7 +110,7 @@ public class MemoryDataBus implements DataBusService, Runnable {
      * @param objectType to submit
      */
     public void submitData(final Envelop<?> objectType) {
-    	LOGGER.log(Level.FINEST, "Submit data on OdynoDataBus");
+        LOGGER.log(Level.FINEST, "Submit data on OdynoDataBus");
         executor.execute(new Runnable() {
             public void run() {
                 memorydata.add(objectType);
@@ -112,7 +123,7 @@ public class MemoryDataBus implements DataBusService, Runnable {
      */
     @Override
     public <T extends Serializable> MemDataPublisher<T> getDataPublisher(Class<T> objectType) {
-    	LOGGER.log(Level.FINEST, "Returned one publisher on OdynoDataBus");
+        LOGGER.log(Level.FINEST, "Returned one publisher on OdynoDataBus");
         return new MemDataPublisher<T>(this);
     }
 
@@ -121,7 +132,7 @@ public class MemoryDataBus implements DataBusService, Runnable {
      */
     @Override
     public <T extends Serializable> boolean registerSubscriber(Subscriber<T, ? extends Filter<T>> subscriver) {
-    	LOGGER.log(Level.FINEST, "request Subscription  on OdynoDataBus");
+        LOGGER.log(Level.FINEST, "request Subscription  on OdynoDataBus");
         subscriver.onChangeSystemStatus(DataBusServiceStatus.BOOTING);
         write.lock();
         try {
@@ -137,16 +148,22 @@ public class MemoryDataBus implements DataBusService, Runnable {
      * @see net.staniscia.odynodatabus.DataBusService#unRegisterSubscriber(net.staniscia.odynodatabus.Subscriber)
      */
     @Override
-    public <T extends Serializable> boolean unRegisterSubscriber(Subscriber<T, ? extends Filter<T>> subscriver) {
-    	LOGGER.log(Level.FINEST, "request unSubscription  on OdynoDataBus");
-        write.lock();
-        try {
-            subscriver.onChangeSystemStatus(DataBusServiceStatus.DESTROY);
-            return subscribers.remove(subscriver);
-        } finally {
-            write.unlock();
+    public <T extends Serializable> boolean unRegisterSubscriber(String subscriverId) {
+        LOGGER.log(Level.FINEST, "request unSubscription  on OdynoDataBus");
+        for (Iterator<Subscriber<?, ?>> it = subscribers.iterator(); it.hasNext();) {
+            Subscriber<? extends Serializable, ? extends Filter<? extends Serializable>> subscriber = it.next();
+            if (subscriber.getIdentification().equals(subscriverId)) {
+                write.lock();
+                try {
+                    subscriber.onChangeSystemStatus(DataBusServiceStatus.DESTROY);
+                    return subscribers.remove(subscriber);
+                } finally {
+                    write.unlock();
+                }
+            }
         }
-    }
+        return false;
+ }
 
     /**
      * none.

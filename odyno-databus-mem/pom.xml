@@ -17,7 +17,7 @@
     <groupId>net.staniscia.as</groupId>
     <artifactId>odyno-databus-mem</artifactId>
     <name>Odyno DataBus - Memory</name>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <description>Light and easy implementation of the "OdynoDatabus-API" to be used in projects involving a single JavaVM</description>
@@ -29,7 +29,7 @@
         <dependency>
             <groupId>net.staniscia.as</groupId>
             <artifactId>odyno-databus-api</artifactId>
-            <version>0.1.0</version>
+            <version>0.1.1-SNAPSHOT</version>
             <type>bundle</type>
             <scope>provided</scope>
         </dependency>

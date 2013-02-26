@@ -29,11 +29,20 @@ public class MemoryDataBusTest {
 	@Test
 	public void testRegisterSubscriber() {
 		MemoryDataBus mdb=new MemoryDataBus();
-		
 		Subscriber<Serializable, ? extends Filter<Serializable>> subscriver=mock(Subscriber.class);
+                when(subscriver.getIdentification()).thenReturn("123");
 		mdb.registerSubscriber(subscriver);
-		mdb.unRegisterSubscriber(subscriver);
+		assertFalse(mdb.unRegisterSubscriber("subscriver"));
 	}
 
+        
+	@Test
+	public void testRegisterSubscriber2() {
+		MemoryDataBus mdb=new MemoryDataBus();
+		Subscriber<Serializable, ? extends Filter<Serializable>> subscriver=mock(Subscriber.class);
+                when(subscriver.getIdentification()).thenReturn("123");
+		mdb.registerSubscriber(subscriver);
+		assertTrue(mdb.unRegisterSubscriber("123"));
+	}
 
 }
