@@ -43,7 +43,7 @@ public interface DataBusService {
 	 *
 	 * @param <T> the generic type
 	 * @param subscriver the subscriver
-	 * @return true, if successful
+	 * @return Object, the handle of Subscriber
 	 */
 	<T extends Serializable> boolean registerSubscriber(Subscriber<T, ? extends Filter<T>> subscriver);
 
@@ -54,5 +54,5 @@ public interface DataBusService {
 	 * @param subscriver the subscriver
 	 * @return true, if successful
 	 */
-	<T extends Serializable> boolean unRegisterSubscriber(Subscriber<T, ? extends Filter<T>> subscriver);
+	<T extends Serializable> boolean unRegisterSubscriber(String subscriverId);
 }

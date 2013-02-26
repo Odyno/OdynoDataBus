@@ -1,32 +1,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 	
-	<!-- ********************************************************** -->
-	<!-- PARENT POM -->
-	<!-- ********************************************************** -->
-	<parent>
-		<groupId>net.staniscia</groupId>
-		<artifactId>ast-parent-pom</artifactId>
-		<version>0.1.0</version>
-	</parent>
-	<!-- ********************************************************** -->
+    <!-- ********************************************************** -->
+    <!-- PARENT POM -->
+    <!-- ********************************************************** -->
+    <parent>
+        <groupId>net.staniscia.as</groupId>
+        <artifactId>odyno-databus-all</artifactId>
+        <version>1.0</version>
+    </parent>
+    <!-- ********************************************************** -->
 	
-	<groupId>net.staniscia.as</groupId>
-	<artifactId>odyno-databus-api</artifactId>
-	<name>Odyno DataBus - API</name>
-	<version>0.1.0</version>
-	<packaging>bundle</packaging>
-	<description>Libreria per la gestione di un databus. Il databus è un componente che mette a disposizione un bus virtuale su cui affidare i propri dati e su cui è possibile mettersi in ascolpo per recuperare dati.
-		Viene implemento il pattern di publish-subscribe con la possibilita' di filtrare i dati non solo per tipologie ma anche per subcategorie di tipologie.</description>
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <groupId>net.staniscia.as</groupId>
+    <artifactId>odyno-databus-api</artifactId>
+    <name>Odyno DataBus - API</name>
+    <version>0.1.1-SNAPSHOT</version>
+    <packaging>bundle</packaging>
+    <description>Libreria per la gestione di un databus. Il databus è un componente che mette a disposizione un bus virtuale su cui affidare i propri dati e su cui è possibile mettersi in ascolpo per recuperare dati.
+        Viene implemento il pattern di publish-subscribe con la possibilita' di filtrare i dati non solo per tipologie ma anche per subcategorie di tipologie.
+    </description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 	
 </project>

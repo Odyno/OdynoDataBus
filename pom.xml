@@ -1,45 +1,54 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
   
-  <!-- *********************************************************** -->
-  <!-- ***************** PARENT POM ****************************** -->
-  <!-- *********************************************************** -->
-  <parent>
-    <groupId>net.staniscia</groupId>
-    <artifactId>ast-parent-pom</artifactId>
-    <version>0.1.0</version>
-  </parent>
-  <!-- *********************************************************** -->
+    <!-- *********************************************************** -->
+    <!-- ***************** PARENT POM ****************************** -->
+    <!-- *********************************************************** -->
+    <parent>
+        <groupId>net.staniscia</groupId>
+        <artifactId>ast-parent-pom</artifactId>
+        <version>0.1.0</version>
+    </parent>
+    <!-- *********************************************************** -->
   
-  <groupId>net.staniscia.as</groupId>
-  <artifactId>odyno-databus-all</artifactId>
-  <version>1.0</version>
-  <packaging>pom</packaging>
-  <name>Odyno Databus</name>
+    <groupId>net.staniscia.as</groupId>
+    <artifactId>odyno-databus-all</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>Odyno Databus</name>
   
-  <url>www.staniscia.net/OdynoDataBus</url>
-  <organization>
-    <name>www.staniscia.net</name>
-    <url>http://www.staniscia.net</url>
-  </organization>
-  <issueManagement>
-    <url>https://github.com/Odyno/OdynoDataBus/issues</url>
-    <system>GitHub</system>
-  </issueManagement>
-  <ciManagement>
-    <url>https://travis-ci.org/Odyno/OdynoDataBus</url>
-    <system>travis-ci.org</system>
-  </ciManagement>
+    <url>www.staniscia.net/OdynoDataBus</url>
+    <organization>
+        <name>www.staniscia.net</name>
+        <url>http://www.staniscia.net</url>
+    </organization>
+    <issueManagement>
+        <url>https://github.com/Odyno/OdynoDataBus/issues</url>
+        <system>GitHub</system>
+    </issueManagement>
+    <ciManagement>
+        <url>https://travis-ci.org/Odyno/OdynoDataBus</url>
+        <system>travis-ci.org</system>
+    </ciManagement>
   
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
   
-  <modules>
-    <module>odyno-databus-api</module>
-    <module>odyno-databus-mem</module>
-    <module>odyno-databus-test</module>
-  </modules>
+    <distributionManagement>
+        <site>
+            <id>ftp-repository-site</id>
+            <name>staniscia.net Website</name>
+            <url>ftp://ftp.staniscia.net/htdocs/OdynoDataBus/</url>
+        </site>
+    </distributionManagement>
+  
+    <modules>
+        <module>odyno-databus-api</module>
+        <module>odyno-databus-mem</module>
+        <module>odyno-databus-net</module>
+        <module>odyno-databus-test</module>
+    </modules>
   
 </project>

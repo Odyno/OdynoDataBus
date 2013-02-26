@@ -19,11 +19,10 @@ package net.staniscia.odynodatabus.tests;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.logging.Logger;
 import net.staniscia.odynodatabus.DataBusServiceStatus;
-
 import net.staniscia.odynodatabus.Subscriber;
-import net.staniscia.odynodatabus.msg.Envelop;
 import net.staniscia.odynodatabus.filters.Filter;
 import net.staniscia.odynodatabus.filters.FilterFactory;
+import net.staniscia.odynodatabus.msg.Envelop;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -75,6 +74,11 @@ public class Validatore implements Subscriber<String, Filter<String>> {
     @Override
     public void onChangeSystemStatus(DataBusServiceStatus status) {
     	LOG.fine("[V] - Status is "+status);
+    }
+
+    @Override
+    public String getIdentification() {
+        return this.getClass().getName();
     }
 
 }

@@ -30,6 +30,11 @@ import net.staniscia.odynodatabus.filters.Filter;
  * @author Alessandro Staniscia
  */
 public interface Subscriber<D extends Serializable, F extends Filter<D>> {
+    
+    /**
+     * Get The unique ID of this Subscriber
+     */
+        String getIdentification();
 
 	/**
 	 * handle when the object receive message in according of filter defined in
