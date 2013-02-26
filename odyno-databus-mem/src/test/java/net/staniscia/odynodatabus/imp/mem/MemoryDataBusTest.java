@@ -1,5 +1,6 @@
 package net.staniscia.odynodatabus.imp.mem;
 
+import net.staniscia.odynodatabus.mem.MemoryDataBus;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 

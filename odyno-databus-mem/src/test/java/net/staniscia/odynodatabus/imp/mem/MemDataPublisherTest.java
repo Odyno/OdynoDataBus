@@ -4,6 +4,8 @@
  */
 package net.staniscia.odynodatabus.imp.mem;
 
+import net.staniscia.odynodatabus.mem.MemDataPublisher;
+import net.staniscia.odynodatabus.mem.MemoryDataBus;
 import java.io.Serializable;
 
 import net.staniscia.odynodatabus.DataBusService;
@@ -80,9 +82,10 @@ public class MemDataPublisherTest {
     	MemoryDataBus dds = mock(MemoryDataBus.class);
     	
         StringMessage dummy = new StringMessage("ciao Come VA?");
+        
         doThrow(PublishException.class).when(dds).submitData(any(StringMessage.class));
         MemDataPublisher<String> instance = new MemDataPublisher<String>(dds);
-		instance.publish(dummy);
+        instance.publish(dummy);
 
     }
     
