@@ -1,6 +1,12 @@
-[![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=master)](https://travis-ci.org/Odyno/OdynoDataBus)
-Odyno DataBus
+Odyno DataBus [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=master)](https://travis-ci.org/Odyno/OdynoDataBus)
 ============
-J2se DataBus component, OSGi R4 compliant.
-Odyno DataBus è un componente per la gestione di un databus logico. Il databus è un componente che mette a disposizione un bus virtuale su cui affidare i propri dati e su cui è possibile mettersi in ascolpo per recuperare dati.
- Viene implemento il pattern di publish-subscribe con la possibilita' di filtrare i dati non solo per tipologie ma anche per subcategorie di tipologie.
+Odyno DataBus is a J2SE DataBus component, OSGi R4 compliant, for the management of a logical databus. It's . The databus is a component that provides a virtual bus on which to entrust their data and where it is possible to listen to retrieve data.
+ Will I implement the publish-subscribe pattern with the possibility to filter the data not only types but also for subcategories of types.
+Here is a short list of features supported by the Odyno DataBus:
+* Odyno DataBus - API    : The API of Odyno DataBus library.
+* Odyno DataBus - Memory : Light and easy implementation of the "OdynoDatabus-API" to be used in projects involving a single JavaVM
+* Odyno DataBus - Net    : Clustered and distributed implementation of OdynoDataBase, for multiple and distributed Java VM.
+
+
+
+

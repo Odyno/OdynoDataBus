@@ -16,17 +16,18 @@
     <artifactId>odyno-databus-all</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>Odyno Databus</name>
-  
-    <url>www.staniscia.net/OdynoDataBus</url>
+    <name>Odyno DataBus</name>
+    <description>Odyno DataBus is a J2SE DataBus component, OSGi R4 compliant, for the management of a logical databus. It's . The databus is a component that provides a virtual bus on which to entrust their data and where it is possible to listen to retrieve data.
+ Will I implement the publish-subscribe pattern with the possibility to filter the data not only types but also for subcategories of types.</description>  
+    <url>http://www.staniscia.net/OdynoDataBus</url>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/Odyno/OdynoDataBus/issues</url>
+    </issueManagement>
     <organization>
         <name>www.staniscia.net</name>
         <url>http://www.staniscia.net</url>
     </organization>
-    <issueManagement>
-        <url>https://github.com/Odyno/OdynoDataBus/issues</url>
-        <system>GitHub</system>
-    </issueManagement>
     <ciManagement>
         <url>https://travis-ci.org/Odyno/OdynoDataBus</url>
         <system>travis-ci.org</system>

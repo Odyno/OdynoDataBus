@@ -11,6 +11,7 @@
     <artifactId>odyno-databus-net</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Odyno DataBus - Net</name>
+    <description>Clustered and distributed implementation of OdynoDataBase, for multiple and distributed Java VM.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -32,5 +33,5 @@
             <version>0.1.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-    <description>The cluster, distribuited Implementation of DataBus</description>
+    
 </project>
