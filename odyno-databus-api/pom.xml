@@ -17,9 +17,7 @@
     <name>Odyno DataBus - API</name>
     <version>0.1.1-SNAPSHOT</version>
     <packaging>bundle</packaging>
-    <description>
-        The API of Odyno DataBus library.
-    </description>
+    <description>The API of Odyno DataBus library.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
