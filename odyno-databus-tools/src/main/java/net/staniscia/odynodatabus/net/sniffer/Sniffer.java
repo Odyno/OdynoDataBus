@@ -7,7 +7,11 @@ package net.staniscia.odynodatabus.net.sniffer;
 import javax.swing.JOptionPane;
 import net.staniscia.odynodatabus.DataBusService;
 import net.staniscia.odynodatabus.net.sniffer.ui.SnifferUI;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
+@Component(name="Sniffer")        
 public class Sniffer {
 
     private DataBusService dbs;
@@ -15,16 +19,16 @@ public class Sniffer {
     private SendAction sendAction;
     private SnifferUI ui;
 
-    public Sniffer() {
-    }
 
-    public void setOdynoDataBus(DataBusService dbs) {
+    @Reference
+    public void setDataBusService(DataBusService dbs) {
         this.dbs = dbs;
         initConsumer();
         initPublischer();
 
     }
 
+    @Activate
     public void start() {
         initHci();
         showUi();

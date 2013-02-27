@@ -32,13 +32,15 @@ import java.util.logging.Logger;
 import net.staniscia.odynodatabus.DataBusService;
 import net.staniscia.odynodatabus.DataBusServiceStatus;
 import net.staniscia.odynodatabus.Subscriber;
-import net.staniscia.odynodatabus.msg.Envelop;
 import net.staniscia.odynodatabus.filters.Filter;
+import net.staniscia.odynodatabus.msg.Envelop;
+import org.osgi.service.component.annotations.Component;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class MemoryDataBus.
  */
+@Component
 public class MemoryDataBus implements DataBusService, Runnable {
 
     /**

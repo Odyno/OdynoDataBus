@@ -31,7 +31,11 @@
             <artifactId>odyno-databus-api</artifactId>
             <version>0.1.1-SNAPSHOT</version>
             <type>bundle</type>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>biz.aQute</groupId>
+            <artifactId>bndlib</artifactId>
+            <version>1.50.0</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -45,6 +49,7 @@
             <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 	
 </project>
