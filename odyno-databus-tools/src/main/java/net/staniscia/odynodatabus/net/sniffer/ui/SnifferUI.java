@@ -36,7 +36,7 @@ public class SnifferUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Use this box to send message on DataBus");
 

@@ -34,13 +34,11 @@ import net.staniscia.odynodatabus.DataBusServiceStatus;
 import net.staniscia.odynodatabus.Subscriber;
 import net.staniscia.odynodatabus.filters.Filter;
 import net.staniscia.odynodatabus.msg.Envelop;
-import org.osgi.service.component.annotations.Component;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class MemoryDataBus.
  */
-@Component
 public class MemoryDataBus implements DataBusService, Runnable {
 
     /**
@@ -134,6 +132,10 @@ public class MemoryDataBus implements DataBusService, Runnable {
      */
     @Override
     public <T extends Serializable> boolean registerSubscriber(Subscriber<T, ? extends Filter<T>> subscriver) {
+        if (subscriver == null) {
+            LOGGER.log(Level.FINEST, "NULL REGISTER");
+            return false;
+        }
         LOGGER.log(Level.FINEST, "request Subscription  on OdynoDataBus");
         subscriver.onChangeSystemStatus(DataBusServiceStatus.BOOTING);
         write.lock();
@@ -165,7 +167,7 @@ public class MemoryDataBus implements DataBusService, Runnable {
             }
         }
         return false;
- }
+    }
 
     /**
      * none.
@@ -173,8 +175,7 @@ public class MemoryDataBus implements DataBusService, Runnable {
     @Override
     public void run() {
         try {
-            while (DataBusServiceStatus.BOOTING.equals(myStatus)
-                    || DataBusServiceStatus.RUNNING.equals(myStatus)) {
+            while (true) { //TODO  !!!!! ELIMINARE !!!!!
                 Envelop<?> data = memorydata.poll(TIME_LIMIT_TO_ATTENDS, TimeUnit.SECONDS);
                 if (data != null) {
                     read.lock();
@@ -205,14 +206,15 @@ public class MemoryDataBus implements DataBusService, Runnable {
         executor.execute(new Runnable() {
             @Override
             public void run() {
+                
                 final Filter f = listener.getFilter();
-                LOGGER.log(Level.FINEST, "\ndata: {0}data.getDataType(): {1} listener: {2} f.getManagedType: {3} isAssignagle: {4} isEquals: {5}", new Object[]{data, data.getContentType(), listener, f.getManagedType(), data.getContentType().isAssignableFrom(f.getManagedType()), data.getContentType().equals(f.getManagedType())});
-                if (data.getContentType().isAssignableFrom(f.getManagedType())) {
+                if (f.getManagedType() == null || data.getContentType().isAssignableFrom(f.getManagedType())) {
                     Serializable content = data.getContent();
                     if (f.passes(content)) {
                         listener.handle(data);
                     }
                 }
+               
             }
         });
     }

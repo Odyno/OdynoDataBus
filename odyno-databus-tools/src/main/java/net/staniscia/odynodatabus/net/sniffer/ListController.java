@@ -44,11 +44,10 @@ public class ListController implements Subscriber<Serializable, Filter<Serializa
         model.addElement(Tools.getTime() + "-Content: " + dataSample.getContent().toString());
     }
 
-    @Override
-    public Filter<Serializable> getFilter() {
-        return new Filter<Serializable>() {
+    public Filter getFilter() {
+        return new Filter() {
             @Override
-            public boolean passes(Serializable object) {
+            public boolean passes(Object object) {
                 return true;
             }
         };
