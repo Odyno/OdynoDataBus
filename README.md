@@ -19,17 +19,17 @@ Example of usage of "Odyno DataBus - Memory"
 --------------------------------------------
 This example start Karaf OSGi container and deploy the implementation of "Odyno Data Bus - Memory".
 
-*Step A)* Download karaf
+**Step A)** Download karaf
 	
 	wget http://apache.panu.it/karaf/2.3.0/apache-karaf-2.3.0.tar.gz
 	tar xvzf apache-karaf-2.3.0.tar.gz 
 	cd apache-karaf-2.3.0/
 
-*Step B)* Open the karaf config file named	
+**Step B)** Open the karaf config file named	
 
 	etc/org.ops4j.pax.url.mvn.cfg 
 
-*Step C)* Search the "org.ops4j.pax.url.mvn.repositories" key and adds the repository of compiled bundles
+**Step C)** Search the "org.ops4j.pax.url.mvn.repositories" key and adds the repository of compiled bundles
 
 	org.ops4j.pax.url.mvn.repositories= \
 		[...]
@@ -38,17 +38,17 @@ This example start Karaf OSGi container and deploy the implementation of "Odyno 
 		http://www.staniscia.net/repository/release/, \
 		http://www.staniscia.net/repository/snapshot/@snapshots@noreleases
 
-*Step D)* Run Karaf 
+**Step D)** Run Karaf 
 
 	./bin/karaf
 
-*Step E)* Install those bundles with pax url syntax
+**Step E)** Install those bundles with pax url syntax
 
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-mem/0.0.2-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 
-*Step F)* That's all.
+**Step F)** That's all.
 
 
 Example of usage of "Odyno DataBus - Net"
@@ -56,13 +56,13 @@ Example of usage of "Odyno DataBus - Net"
 This example start Karaf OSGi container and deploy the "Odyno Data Bus - Net" implementation.
 Follow the steps of last example and replace the "Step E" with the follower step
 
-*Step E)* Install those bundles with pax url syntax
+**Step E)** Install those bundles with pax url syntax
 
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-net/0.0.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 	
-*Step F)* Run on one pc and repeat the steps in to the other pc and show the distributed version of Odyno DataBus
+**Step F)** Run on one pc and repeat the steps in to the other pc and show the distributed version of Odyno DataBus
 
 
 
