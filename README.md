@@ -33,8 +33,8 @@ add the repository
 
 	org.ops4j.pax.url.mvn.repositories= \
 	... , \
-	http://www.staniscia.net/repository/release, \
-	http://www.staniscia.net/repository/snapshot
+	http://www.staniscia.net/repository/release/, \
+	http://www.staniscia.net/repository/snapshot/@snapshots@noreleases
 
 Now run Karaf
 
