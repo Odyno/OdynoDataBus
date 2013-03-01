@@ -38,7 +38,7 @@ public class Sniffer {
             LOG.log(Level.INFO, "Inject ServiceDataBus");
             this.dataBusService = dataBusService;
             this.dataBusService.registerSubscriber(getListCtrl());
-            Publisher<String> pub = dataBusService.getDataPublisher(String.class);
+            Publisher pub = dataBusService.getDataPublisher(String.class);
             sendAction = new SendAction(pub, getUi().messageLabel);
             getUi().sendButton.addActionListener(sendAction);
             getUi().sendButton.setEnabled(true);

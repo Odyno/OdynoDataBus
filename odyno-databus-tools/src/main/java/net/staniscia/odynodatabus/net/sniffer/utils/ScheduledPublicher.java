@@ -23,11 +23,11 @@ public class ScheduledPublicher implements Runnable {
      * The ses.
      */
     public static ScheduledExecutorService ses = Executors.newScheduledThreadPool(1);
-    private Publisher<String> publi;
+    private Publisher publi;
     private final int maxDelay;
     private final TimeUnit tUnit;
 
-    public ScheduledPublicher(Publisher<String> publi, int maxDelay, TimeUnit tUnit) {
+    public ScheduledPublicher(Publisher publi, int maxDelay, TimeUnit tUnit) {
         this.publi = publi;
         this.maxDelay = maxDelay;
         this.tUnit = tUnit;
@@ -41,7 +41,7 @@ public class ScheduledPublicher implements Runnable {
         try {
             String msg = Tools.getHostName() + " send message ad " + Tools.getTime();
             Logger.getLogger(ScheduledPublicher.class.getName()).log(Level.INFO, msg);
-            publi.publish(new StringMessage(msg));
+            publi.publish(StringMessage.make(msg));
             scheduleMe(maxDelay, tUnit);
         } catch (PublishException ex) {
             Logger.getLogger(ScheduledPublicher.class.getName()).log(Level.SEVERE, null, ex);

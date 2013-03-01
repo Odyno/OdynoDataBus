@@ -68,7 +68,7 @@ public class MemDataPublisherTest {
     @Test
     public void testPublishObject() throws PublishException {
         MemDataPublisher instance = new MemDataPublisher<String>(dds);
-        StringMessage envelop = new StringMessage("ciao Come VA?");
+        StringMessage envelop = StringMessage.make("ciao Come VA?");
 	instance.publish(envelop);
         verify(dds).submitData(envelop);
     }
@@ -81,7 +81,7 @@ public class MemDataPublisherTest {
     public void testPublishObjectReturnException() throws PublishException {
     	MemoryDataBus dds = mock(MemoryDataBus.class);
     	
-        StringMessage dummy = new StringMessage("ciao Come VA?");
+        StringMessage dummy =  StringMessage.make("ciao Come VA?");
         
         doThrow(PublishException.class).when(dds).submitData(any(StringMessage.class));
         MemDataPublisher<String> instance = new MemDataPublisher<String>(dds);

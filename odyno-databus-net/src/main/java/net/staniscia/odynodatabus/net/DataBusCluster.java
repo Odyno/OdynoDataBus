@@ -28,7 +28,7 @@ public class DataBusCluster implements DataBusService {
      */
     private static final Logger LOGGER = Logger.getLogger(DataBusCluster.class.getName());
     private HazelcastInstance hzCloud;
-    private ITopic<Envelop<?>> hzDistriuitedTopic;
+    private ITopic<Envelop> hzDistriuitedTopic;
     /**
      * The write.
      */
@@ -53,14 +53,16 @@ public class DataBusCluster implements DataBusService {
     }
 
     @Override
-    public <T extends Serializable> Publisher<T> getDataPublisher(final Class<T> objectType) {
+    public <T extends Serializable> Publisher getDataPublisher(Class<T> objectType) {
         LOGGER.log(Level.INFO, "Returned one publisher on OdynoDataBus");
-        return new TopicProducer(hzDistriuitedTopic);
+        Publisher out=new TopicProducer(hzDistriuitedTopic);
+        return out;
     }
+
 
     @Override
     public <T extends Serializable> boolean registerSubscriber(Subscriber<T, ? extends Filter<T>> subscriver) {
-        boolean reason =false;
+        boolean reason = false;
         LOGGER.log(Level.INFO, "request Subscription  on OdynoDataBus");
         if (!subscribers.containsKey(subscriver.getIdentification())) {
             TopicConsumer topicConsumer = null;
@@ -71,8 +73,8 @@ public class DataBusCluster implements DataBusService {
                 subscribers.put(subscriver.getIdentification(), topicConsumer);
                 topicConsumer.onChangeSystemStatus(DataBusServiceStatus.RUNNING);
                 reason = true;
-            }catch(Exception e){
-                 if (topicConsumer != null) {
+            } catch (Exception e) {
+                if (topicConsumer != null) {
                     topicConsumer.onChangeSystemStatus(DataBusServiceStatus.CONFUSED);
                 }
             } finally {
@@ -85,7 +87,7 @@ public class DataBusCluster implements DataBusService {
 
     @Override
     public <T extends Serializable> boolean unRegisterSubscriber(String subscriverId) {
-        boolean reason= false;
+        boolean reason = false;
         if (subscribers.containsKey(subscriverId)) {
             lockConcurrentList.lock();
             TopicConsumer obj = null;
@@ -102,7 +104,7 @@ public class DataBusCluster implements DataBusService {
             } finally {
                 lockConcurrentList.unlock();
             }
-            
+
         }
         return reason;
     }

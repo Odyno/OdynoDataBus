@@ -1,19 +1,19 @@
 /*  
-    Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
+ Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License, version 2, as
+ published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 package net.staniscia.odynodatabus.msg;
 
 import java.io.Serializable;
@@ -26,13 +26,17 @@ import java.io.Serializable;
  */
 public class SerializableMessage<T extends Serializable> implements Envelop<T> {
 
-    /** The time. */
+    /**
+     * The time.
+     */
     private long time = System.currentTimeMillis();
-    
-    /** The Constant serialVersionUID. */
+    /**
+     * The Constant serialVersionUID.
+     */
     private static final long serialVersionUID = 5759583007849201371L;
-    
-    /** The data object. */
+    /**
+     * The data object.
+     */
     private T dataObject;
 
     /**
@@ -40,10 +44,11 @@ public class SerializableMessage<T extends Serializable> implements Envelop<T> {
      *
      * @param dataObject the data object
      */
-    public SerializableMessage(T dataObject) {
+    public SerializableMessage() {
         super();
-        this.dataObject = dataObject;
+
     }
+
 
     /* (non-Javadoc)
      * @see net.staniscia.odynodatabus.msg.Envelop#getTimeOfOccurence()
@@ -57,7 +62,7 @@ public class SerializableMessage<T extends Serializable> implements Envelop<T> {
      * @see net.staniscia.odynodatabus.msg.Envelop#getContentType()
      */
     @SuppressWarnings("unchecked")
-	@Override
+    @Override
     public Class<T> getContentType() {
         return (Class<T>) dataObject.getClass();
     }
@@ -69,6 +74,17 @@ public class SerializableMessage<T extends Serializable> implements Envelop<T> {
     public T getContent() {
         return dataObject;
     }
+
+    private void setDataObject(T dataObject) {
+        this.dataObject = dataObject;
+    }
+
+    public static <T extends Serializable>  SerializableMessage<T> make(final T t) {
+        SerializableMessage msg = new SerializableMessage();
+        msg.setDataObject(t);
+        return msg;
+    }
+
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()

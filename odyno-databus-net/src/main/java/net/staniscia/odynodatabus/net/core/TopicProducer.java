@@ -25,29 +25,26 @@ import net.staniscia.odynodatabus.Publisher;
 import net.staniscia.odynodatabus.exceptions.PublishException;
 import net.staniscia.odynodatabus.msg.Envelop;
 
-
 /**
  * Simple template.
  *
  * @param D the generic type
  * @author Alessandro Staniscia
  */
-public class TopicProducer<D extends Serializable> implements Publisher<D> , Serializable {
+public class TopicProducer implements Publisher, Serializable {
 
     /**
      * The Constant LOGGER.
      */
     private static final Logger LOGGER = Logger.getLogger(TopicProducer.class.getName());
-    private ITopic<Envelop<D>> topic;
+    private ITopic<Envelop> topic;
 
-    public TopicProducer(ITopic<Envelop<D>> topic) {
-        if (topic== null){
-            throw  new IllegalArgumentException("No topic FOUND");
+    public TopicProducer(ITopic<Envelop> topic) {
+        if (topic == null) {
+            throw new IllegalArgumentException("No topic FOUND");
         }
         this.topic = topic;
     }
-
-
 
 
 
@@ -56,7 +53,7 @@ public class TopicProducer<D extends Serializable> implements Publisher<D> , Ser
      * @see net.staniscia.odynodatabus.Publisher#publish(net.staniscia.odynodatabus.msg.Envelop)
      */
     @Override
-    public void publish(final Envelop<D> data) throws PublishException {
+    public void publish(final Envelop data) throws PublishException {
         LOGGER.log(Level.FINEST, "request publish data");
         topic.publish(data);
     }

@@ -16,11 +16,11 @@ import net.staniscia.odynodatabus.net.sniffer.utils.RandomScheduledPublischer;
  */
 public class RandomSenderAction extends AbstractAction {
 
-    private final Publisher<String> pub;
+    private final Publisher pub;
     private final int time;
     private  RandomScheduledPublischer rsa;
 
-    RandomSenderAction(Publisher<String> dataPublisher,int time) {
+    RandomSenderAction(Publisher dataPublisher,int time) {
         super("Rundom Send "+time+"s");
         this.pub = dataPublisher;
         this.time=time;

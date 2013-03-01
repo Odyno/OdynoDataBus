@@ -31,7 +31,7 @@ import net.staniscia.odynodatabus.msg.Envelop;
  * @param <T> the generic type
  * @author Alessandro Staniscia
  */
-public class MemDataPublisher<T extends Serializable> implements Publisher<T> {
+public class MemDataPublisher<T extends Serializable> implements Publisher{
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = Logger.getLogger(MemoryDataBus.class.getName());
@@ -54,7 +54,8 @@ public class MemDataPublisher<T extends Serializable> implements Publisher<T> {
 	/* (non-Javadoc)
 	 * @see net.staniscia.odynodatabus.Publisher#publish(net.staniscia.odynodatabus.msg.Envelop)
 	 */
-	public void publish(final Envelop<T> data) throws PublishException{
+        @Override
+	public void publish(final Envelop data) throws PublishException{
 	if (data==null || data.getContent()== null){
             throw new IllegalArgumentException("content is Null");
         }	
@@ -62,5 +63,7 @@ public class MemDataPublisher<T extends Serializable> implements Publisher<T> {
                 
 		dds.submitData(data);
 	}
+
+
 
 }

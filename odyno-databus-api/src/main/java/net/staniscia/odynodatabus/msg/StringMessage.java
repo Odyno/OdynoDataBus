@@ -1,34 +1,40 @@
 /*  
-    Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
+ Copyright 2012  Alessandro Staniscia ( alessandro@staniscia.net )
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License, version 2, as
+ published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
 package net.staniscia.odynodatabus.msg;
 
 // TODO: Auto-generated Javadoc
+import java.io.Serializable;
+
 /**
  * Manage simple String message.
  */
-public class StringMessage implements Envelop<String> {
+public class StringMessage implements Envelop<String>, Serializable {
 
-    /** The Constant serialVersionUID. */
+    /**
+     * The Constant serialVersionUID.
+     */
     private static final long serialVersionUID = -6418123090379845471L;
-    
-    /** The time of occurence. */
+    /**
+     * The time of occurence.
+     */
     private long timeOfOccurence;
-    
-    /** The treasure. */
+    /**
+     * The treasure.
+     */
     private String treasure;
 
     /**
@@ -36,12 +42,10 @@ public class StringMessage implements Envelop<String> {
      *
      * @param string the string
      */
-    public StringMessage(String string) {
+    public StringMessage() {
         timeOfOccurence = System.currentTimeMillis();
-        this.treasure = string;
     }
-    
-    
+
     /* (non-Javadoc)
      * @see net.staniscia.odynodatabus.msg.Envelop#getTimeOfOccurence()
      */
@@ -64,6 +68,16 @@ public class StringMessage implements Envelop<String> {
     @Override
     public String getContent() {
         return treasure;
+    }
+
+    private void setContent(final String t) {
+        this.treasure=t;
+    }
+
+    public static StringMessage make(final String t) {
+        StringMessage msg = new StringMessage();
+        msg.setContent(t);
+        return msg;
     }
 
     /* (non-Javadoc)
@@ -94,6 +108,4 @@ public class StringMessage implements Envelop<String> {
         builder.append("]");
         return builder.toString();
     }
-    
-    
 }

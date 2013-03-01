@@ -36,7 +36,7 @@ public interface DataBusService {
 	 * @param objectType the object type
 	 * @return the data publisher
 	 */
-	<T extends Serializable> Publisher<T> getDataPublisher(Class<T> objectType);
+	<T extends Serializable> Publisher getDataPublisher(Class<T> objectType);
 
 	/**
 	 * Register subscriber.

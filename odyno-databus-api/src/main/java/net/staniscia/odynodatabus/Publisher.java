@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @param <T> the generic type
  */
-public interface Publisher<T extends Serializable> extends Serializable{
+public interface Publisher extends Serializable{
 
 	/**
 	 * Publish data.
@@ -35,7 +35,7 @@ public interface Publisher<T extends Serializable> extends Serializable{
 	 * @param data the data
 	 * @throws PublishException the publish exception
 	 */
-	void publish(Envelop<T> data) throws PublishException;
+	void publish(Envelop data) throws PublishException;
 	
 	
 }

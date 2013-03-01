@@ -16,11 +16,11 @@ import net.staniscia.odynodatabus.net.sniffer.utils.ScheduledPublicher;
  */
 public class ScheduledSenderAction extends AbstractAction {
 
-    private final Publisher<String> pub;
+    private final Publisher pub;
     private final int time;
     private  ScheduledPublicher rsa;
 
-    ScheduledSenderAction(Publisher<String> dataPublisher,int time) {
+    ScheduledSenderAction(Publisher dataPublisher,int time) {
         super("Scheduled Send "+time+"s");
         this.pub = dataPublisher;
         this.time=time;

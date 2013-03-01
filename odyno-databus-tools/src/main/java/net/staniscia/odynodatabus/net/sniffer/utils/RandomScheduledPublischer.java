@@ -13,7 +13,7 @@ import net.staniscia.odynodatabus.Publisher;
  */
 public class RandomScheduledPublischer extends ScheduledPublicher {
 
-    public RandomScheduledPublischer(Publisher<String> publi, int maxDelay, TimeUnit tUnit) {
+    public RandomScheduledPublischer(Publisher publi, int maxDelay, TimeUnit tUnit) {
         super(publi, maxDelay, tUnit);
 
     }
