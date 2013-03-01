@@ -8,14 +8,16 @@ Here is a short list of features supported by the Odyno DataBus:
 * Odyno DataBus - Net    : Clustered and distributed implementation of OdynoDataBase, for multiple and distributed Java VM.
 * Odyno DataBus - Tools  : Just Tools
 
-Build Status:
+Build Status
+------------
 
 * Master [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=master)](https://travis-ci.org/Odyno/OdynoDataBus)
 * Development [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=development)](https://travis-ci.org/Odyno/OdynoDataBus)
 
 
 Example Of Usage
-================
+----------------
+
 This example start Karaf OSGi end deploy the simple implementation of "Odyno DataBus - Memory".
 Download karaf::
 	
@@ -23,26 +25,26 @@ Download karaf::
 	tar xvzf apache-karaf-2.3.0.tar.gz 
 	cd apache-karaf-2.3.0/
 
-Add the repository url into karaf config file::	
+Add the repository url into karaf config file	
 
 	etc/org.ops4j.pax.url.mvn.cfg 
 
-add the repository::
+add the repository
 
 	org.ops4j.pax.url.mvn.repositories= \
 	... , \
 	http://www.staniscia.net/repository/release, \
-	http://www.staniscia.net/repository/release
+	http://www.staniscia.net/repository/snapshot
 
-Now run Karaf::
+Now run Karaf
 
 	./bin/karaf debug
 
-and install this bundle with pax url syntax::
+and install this bundle with pax url syntax
 
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-mem/0.0.2-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 
-Thats All.
+That's all.
 
