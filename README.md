@@ -56,6 +56,8 @@ Example of usage of "Odyno DataBus - Net"
 This example start Karaf OSGi container and deploy the "Odyno Data Bus - Net" implementation.
 Follow the steps of last example and replace the "Step E" with the follower step
 
+Step E) Install those bundles with pax url syntax
+
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-net/0.0.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
