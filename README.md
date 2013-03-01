@@ -46,9 +46,10 @@ This example start Karaf OSGi container and deploy the implementation of "Odyno 
 
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-mem/0.0.2-SNAPSHOT
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 
-**Step F)** That's all.
+**Step F)** That's all, now test it width the extra bundle
+
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 
 
 Example of usage of "Odyno DataBus - Net"
@@ -61,8 +62,10 @@ Follow the steps of last example and replace the "Step E" with the follower step
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-net/0.0.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
-	
-**Step F)** Run on one pc and repeat the steps in to the other pc and show the distributed version of Odyno DataBus
 
+**Step F)** Repeat the steps into another PC. When you have finished you can tests the instances with the extra bundle
 
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
+
+So, when you send data in to the bus all instance of Odyno DataBus receive the message and print it on display... That's all!
 
