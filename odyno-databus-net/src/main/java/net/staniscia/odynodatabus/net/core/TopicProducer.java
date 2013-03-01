@@ -29,28 +29,34 @@ import net.staniscia.odynodatabus.msg.Envelop;
 /**
  * Simple template.
  *
- * @param <T> the generic type
+ * @param D the generic type
  * @author Alessandro Staniscia
  */
-public class TopicProducer<T extends Serializable> implements Publisher<T> {
+public class TopicProducer<D extends Serializable> implements Publisher<D> , Serializable {
 
     /**
      * The Constant LOGGER.
      */
     private static final Logger LOGGER = Logger.getLogger(TopicProducer.class.getName());
-    private ITopic<Envelop<?>> topic;
+    private ITopic<Envelop<D>> topic;
 
-    public TopicProducer(ITopic<Envelop<?>> topic) {
+    public TopicProducer(ITopic<Envelop<D>> topic) {
         if (topic== null){
             throw  new IllegalArgumentException("No topic FOUND");
         }
         this.topic = topic;
     }
 
+
+
+
+
+
     /* (non-Javadoc)
      * @see net.staniscia.odynodatabus.Publisher#publish(net.staniscia.odynodatabus.msg.Envelop)
      */
-    public void publish(final Envelop<T> data) throws PublishException {
+    @Override
+    public void publish(final Envelop<D> data) throws PublishException {
         LOGGER.log(Level.FINEST, "request publish data");
         topic.publish(data);
     }

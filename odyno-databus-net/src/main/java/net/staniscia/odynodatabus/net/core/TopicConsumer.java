@@ -7,11 +7,9 @@ package net.staniscia.odynodatabus.net.core;
 import com.hazelcast.core.Message;
 import com.hazelcast.core.MessageListener;
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
+import net.staniscia.odynodatabus.DataBusServiceStatus;
 import net.staniscia.odynodatabus.Subscriber;
 import net.staniscia.odynodatabus.filters.Filter;
 import net.staniscia.odynodatabus.msg.Envelop;
@@ -20,33 +18,48 @@ import net.staniscia.odynodatabus.msg.Envelop;
  *
  *
  */
-public class TopicConsumer implements MessageListener<Envelop<?>> {
+public class TopicConsumer<D extends Serializable> implements MessageListener<Envelop<D>>, Serializable {
 
     private static final Executor messageExecutor = Executors.newSingleThreadExecutor();
-    private Subscriber<?, ? extends Filter<?>> subscriver;
+    private Subscriber<D, Filter<D>> subscriver;
 
-    public TopicConsumer(Subscriber<?, ? extends Filter<?>> subscriver) {
+    public TopicConsumer(Subscriber<D, Filter<D>> subscriver) {
         this.subscriver = subscriver;
+        onChangeSystemStatus(DataBusServiceStatus.BOOTING);
     }
 
     @Override
-    public void onMessage(final Message<Envelop<?>> msg) {
+    public void onMessage(final Message<Envelop<D>> msg) {
         messageExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                Envelop data = msg.getMessageObject();
-                notifyToSubscriber(data);
+                notifyToSubscriber(msg.getMessageObject());
             }
         });
     }
 
-    private void notifyToSubscriber(Envelop data) {
+    private void notifyToSubscriber(Envelop<D> messageObject) {
         final Filter f = subscriver.getFilter();
-        if (data.getContentType().isAssignableFrom(f.getManagedType())) {
-            Serializable content = data.getContent();
+        if (f.getManagedType() == null
+                || messageObject.getContentType().isAssignableFrom(f.getManagedType())) {
+            Serializable content = messageObject.getContent();
             if (f.passes(content)) {
-                subscriver.handle(data);
+                subscriver.handle(messageObject);
             }
         }
+    }
+
+    /**
+     * handle when the system status is changed.
+     *
+     * @param status the status
+     */
+    public void onChangeSystemStatus(final DataBusServiceStatus status) {
+        messageExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                subscriver.onChangeSystemStatus(status);
+            }
+        });
     }
 }

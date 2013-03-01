@@ -20,7 +20,7 @@ package net.staniscia.odynodatabus.msg;
 /**
  * Manage simple String message.
  */
-public final class StringMessage implements Envelop<String> {
+public class StringMessage implements Envelop<String> {
 
     /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -6418123090379845471L;

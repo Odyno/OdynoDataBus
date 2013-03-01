@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+ 
+    <!-- Declare your beans here -->
+
+    <service id="DataBusService" interface="net.staniscia.odynodatabus.DataBusService" >
+        <bean class="net.staniscia.odynodatabus.net.DataBusCluster" />
+    </service>
+    
+ 
+</blueprint>

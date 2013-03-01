@@ -29,7 +29,7 @@ import net.staniscia.odynodatabus.filters.Filter;
  * @param <F> filter applayed on data for filtering the occurrence of data
  * @author Alessandro Staniscia
  */
-public interface Subscriber<D extends Serializable, F extends Filter<D>> {
+public interface Subscriber<D extends Serializable, F extends Filter<D>> extends Serializable {
     
     /**
      * Get The unique ID of this Subscriber

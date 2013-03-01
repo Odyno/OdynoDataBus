@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @param <T> the generic type
  */
-public interface Publisher<T extends Serializable> {
+public interface Publisher<T extends Serializable> extends Serializable{
 
 	/**
 	 * Publish data.
