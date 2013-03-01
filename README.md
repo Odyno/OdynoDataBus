@@ -18,6 +18,7 @@ Build status
 Example of usage of "Odyno DataBus - Memory"
 --------------------------------------------
 This example start Karaf OSGi container and deploy the implementation of "Odyno Data Bus - Memory".
+
 Step A) Download karaf
 	
 	wget http://apache.panu.it/karaf/2.3.0/apache-karaf-2.3.0.tar.gz
