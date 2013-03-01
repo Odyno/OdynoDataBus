@@ -19,7 +19,7 @@ Example Of Usage
 ----------------
 
 This example start Karaf OSGi end deploy the simple implementation of "Odyno DataBus - Memory".
-Download karaf::
+Download karaf
 	
 	wget http://apache.panu.it/karaf/2.3.0/apache-karaf-2.3.0.tar.gz
 	tar xvzf apache-karaf-2.3.0.tar.gz 
