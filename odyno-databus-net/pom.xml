@@ -9,7 +9,7 @@
     </parent>
     <groupId>net.staniscia.as</groupId>
     <artifactId>odyno-databus-net</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <packaging>bundle</packaging>
     <name>Odyno DataBus - Net</name>
     <description>Clustered and distributed implementation of OdynoDataBase, for multiple and distributed Java VM.</description>
@@ -20,15 +20,14 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>odyno-databus-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <version>0.1.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
             <version>2.5</version>
-            
-        </dependency>
+       </dependency>
     </dependencies>
         <build>
         <plugins>
@@ -47,6 +46,5 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
- 
+    </build> 
 </project>

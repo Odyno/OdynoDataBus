@@ -16,7 +16,6 @@
 */
 package net.staniscia.odynodatabus;
 
-// TODO: Auto-generated Javadoc
 /**
  * Status Notifyed on DataSubscriber.
  */
@@ -32,6 +31,12 @@ public enum DataBusServiceStatus {
     DESTROY,
     
     /** The confused. */
-    CONFUSED
+    CONFUSED,
+    
+    /** New Pear on bus */
+    WELCOME,
+    
+    /** One Pear go out  */
+    GOODBYE
     
 }

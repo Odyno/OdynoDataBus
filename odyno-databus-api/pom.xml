@@ -15,7 +15,7 @@
     <groupId>net.staniscia.as</groupId>
     <artifactId>odyno-databus-api</artifactId>
     <name>Odyno DataBus - API</name>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <packaging>bundle</packaging>
     <description>The API of Odyno DataBus library.</description>
     <properties>

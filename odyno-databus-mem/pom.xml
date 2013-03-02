@@ -17,11 +17,9 @@
     <groupId>net.staniscia.as</groupId>
     <artifactId>odyno-databus-mem</artifactId>
     <name>Odyno DataBus - Memory</name>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.1.1</version>
     <packaging>bundle</packaging>
-
     <description>Light and easy implementation of the "OdynoDatabus-API" to be used in projects involving a single JavaVM</description>
-        
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -29,10 +27,9 @@
         <dependency>
             <groupId>net.staniscia.as</groupId>
             <artifactId>odyno-databus-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <version>0.1.1</version>
             <type>bundle</type>
         </dependency>
-
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
@@ -45,7 +42,5 @@
             <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-	
 </project>

@@ -13,7 +13,7 @@
     <!-- ********************************************************** -->
     <groupId>net.staniscia.as</groupId>
     <artifactId>odyno-databus-tools</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <name>Odyno DataBus - Tools</name>
     <packaging>bundle</packaging>
     <description>Tools of OdynoDataBus used for test or show information of bus</description>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>net.staniscia.as</groupId>
             <artifactId>odyno-databus-api</artifactId>
-            <version>0.1.1-SNAPSHOT</version>
+            <version>0.1.1</version>
             <!--scope>provided</scope-->
         </dependency>
         <dependency>
@@ -37,5 +37,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
 </project>
