@@ -15,8 +15,8 @@ Build status
 * Master [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=master)](https://travis-ci.org/Odyno/OdynoDataBus)
 * Development [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=development)](https://travis-ci.org/Odyno/OdynoDataBus)
 * Tags 
-    > V0.1.0 [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=V0.1.0)](https://travis-ci.org/Odyno/OdynoDataBus)
-    > V0.1.1 [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=V0.1.1)](https://travis-ci.org/Odyno/OdynoDataBus)
+  ** V0.1.0 [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=V0.1.0)](https://travis-ci.org/Odyno/OdynoDataBus)
+  ** V0.1.1 [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=V0.1.1)](https://travis-ci.org/Odyno/OdynoDataBus)
 
 
 Example of usage of "Odyno DataBus - Memory"
