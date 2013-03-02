@@ -20,7 +20,7 @@ import net.staniscia.odynodatabus.msg.Envelop;
  */
 public class TopicConsumer<D extends Serializable> implements MessageListener<Envelop<D>>, Serializable {
 
-    private static final Executor messageExecutor = Executors.newSingleThreadExecutor();
+    //private static final Executor messageExecutor = Executors.newSingleThreadExecutor();
     private Subscriber<D, Filter<D>> subscriver;
 
     public TopicConsumer(Subscriber<D, Filter<D>> subscriver) {
@@ -30,12 +30,13 @@ public class TopicConsumer<D extends Serializable> implements MessageListener<En
 
     @Override
     public void onMessage(final Message<Envelop<D>> msg) {
-        messageExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                notifyToSubscriber(msg.getMessageObject());
-            }
-        });
+          notifyToSubscriber(msg.getMessageObject());
+//        messageExecutor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//              
+//            }
+//        });
     }
 
     private void notifyToSubscriber(Envelop<D> messageObject) {
@@ -55,11 +56,12 @@ public class TopicConsumer<D extends Serializable> implements MessageListener<En
      * @param status the status
      */
     public void onChangeSystemStatus(final DataBusServiceStatus status) {
-        messageExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                subscriver.onChangeSystemStatus(status);
-            }
-        });
+        subscriver.onChangeSystemStatus(status);
+//        messageExecutor.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                
+//            }
+//        });
     }
 }

@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
- 
-    <!-- Declare your beans here -->
-
-    <service id="DataBusService" interface="net.staniscia.odynodatabus.DataBusService" >
-        <bean class="net.staniscia.odynodatabus.net.DataBusCluster" />
-    </service>
+   
+    <!-- 
+    SETUP Hazelcast 
     
- 
+    <service id="hz" interface="com.hazelcast.core.HazelcastInstance" ref="hazelcast"/>
+    <bean id="config" class="com.hazelcast.config.Config" />
+    <bean class="com.hazelcast.core.Hazelcast" 
+          factory-method="newHazelcastInstance" 
+          id="hazelcast">
+        <argument ref="config"/>
+    </bean>
+    
+    
+    
+    
+    <bean id="topic" factory-method="getTopic" factory-ref="hz" >
+        <argument value="MyName"/>
+    </bean>
+    
+    <bean id="map" factory-method="getMap" factory-ref="hz" >
+        <argument value="MyMap"/>
+    </bean>
+
+    <bean id="lockOnMap" factory-method="getLock" factory-ref="hz" >
+        <argument ref="map"/>
+    </bean>
+    -->
+    
+    <service id="DataBusService" interface="net.staniscia.odynodatabus.DataBusService" ref="DataBusCluster"/>
+    <bean id="DataBusCluster" class="net.staniscia.odynodatabus.net.DataBusCluster">
+      <!--  <argument ref="topic"/>
+        <argument ref="map"/>
+        <argument ref="lockOnMap"/> -->
+    </bean>
+     
 </blueprint>

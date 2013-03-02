@@ -38,16 +38,15 @@ public class TopicProducer implements Publisher, Serializable {
      */
     private static final Logger LOGGER = Logger.getLogger(TopicProducer.class.getName());
     private ITopic<Envelop> topic;
+    private final ClassLoader osgiClassLoader;
 
-    public TopicProducer(ITopic<Envelop> topic) {
+    public TopicProducer(ITopic<Envelop> topic,ClassLoader osgiClassLoader) {
         if (topic == null) {
             throw new IllegalArgumentException("No topic FOUND");
         }
         this.topic = topic;
+        this.osgiClassLoader=osgiClassLoader;
     }
-
-
-
 
     /* (non-Javadoc)
      * @see net.staniscia.odynodatabus.Publisher#publish(net.staniscia.odynodatabus.msg.Envelop)

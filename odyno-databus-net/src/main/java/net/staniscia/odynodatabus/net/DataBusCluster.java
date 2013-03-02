@@ -1,6 +1,5 @@
 package net.staniscia.odynodatabus.net;
 
-import com.hazelcast.config.ClasspathXmlConfig;
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
@@ -23,42 +22,31 @@ import net.staniscia.odynodatabus.net.core.*;
  */
 public class DataBusCluster implements DataBusService {
 
-    /**
-     * The Constant LOGGER.
-     */
+    
     private static final Logger LOGGER = Logger.getLogger(DataBusCluster.class.getName());
-    private HazelcastInstance hzCloud;
     private ITopic<Envelop> hzDistriuitedTopic;
-    /**
-     * The write.
-     */
     private Lock lockConcurrentList;
-    /**
-     * The subscribers.
-     */
     private final Map<String, TopicConsumer> subscribers;
+    private ClassLoader osgiClassLoader;
+    
 
     public DataBusCluster() {
-        Config cfg = null;
-        try {
-            cfg = new ClasspathXmlConfig("OdynoDatabus-hazelcast.xml");
-        } catch (Exception e) {
-            LOGGER.log(Level.WARNING, "No File Found, load standard Config. Cause: ", e);
-            cfg = new Config();
-        }
-        hzCloud = Hazelcast.newHazelcastInstance(cfg);
-        hzDistriuitedTopic = hzCloud.getTopic("databus-default-topic");
-        subscribers = hzCloud.getMap("subscribers-default-topic");
-        lockConcurrentList = hzCloud.getLock(subscribers);
+        osgiClassLoader=this.getClass().getClassLoader();
+        Thread.currentThread().setContextClassLoader(osgiClassLoader);
+        Config conf= new Config();
+        HazelcastInstance cloud = Hazelcast.newHazelcastInstance(conf);
+        this.hzDistriuitedTopic = cloud.getTopic("TOPIC-BUS");
+        this.subscribers = cloud.getMap("SUBSCRIBE-BUS");
+        this.lockConcurrentList = cloud.getLock(subscribers);
+        
     }
 
     @Override
     public <T extends Serializable> Publisher getDataPublisher(Class<T> objectType) {
         LOGGER.log(Level.INFO, "Returned one publisher on OdynoDataBus");
-        Publisher out=new TopicProducer(hzDistriuitedTopic);
+        Publisher out = new TopicProducer(hzDistriuitedTopic, osgiClassLoader);
         return out;
     }
-
 
     @Override
     public <T extends Serializable> boolean registerSubscriber(Subscriber<T, ? extends Filter<T>> subscriver) {

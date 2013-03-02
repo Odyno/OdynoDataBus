@@ -33,7 +33,7 @@ public class SendAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            pub.publish(StringEnvelop.make(textLabel.getText()));
+            pub.publish(StringMessage.make(textLabel.getText()));
         } catch (PublishException ex) {
             Logger.getLogger(Sniffer.class.getName()).log(Level.SEVERE, null, ex);
         }
