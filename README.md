@@ -1,9 +1,9 @@
 Odyno DataBus 
 ============
 Odyno DataBus is a J2SE DataBus component, OSGi R4 compliant, for the management of a logical databus. 
-The Odyno DataBus is a subsystem that transfers Java-Object between components inside a computer, or between computers. 
+The Odyno DataBus is a subsystem that transfers Java-Object among components inside a computer, or among computers. 
 I have implemented the publish-subscribe pattern with the possibility to filter by types or by aspect of types.
-Here is a short list of features supported by the Odyno DataBus:
+Here it is a short list of features supported by the Odyno DataBus:
 * Odyno DataBus - API    : The API of Odyno DataBus library.
 * Odyno DataBus - Memory : Light and easy implementation of the "OdynoDatabus-API" to be used in projects involving a single JavaVM
 * Odyno DataBus - Net    : Clustered and distributed implementation of OdynoDataBase, for multiple and distributed Java VM.
@@ -18,7 +18,7 @@ Build status
 
 Example of usage of "Odyno DataBus - Memory"
 --------------------------------------------
-This example start Karaf OSGi container and deploy the implementation of "Odyno Data Bus - Memory".
+This example shows how to start Karaf OSGi container and to deploy the implementation of "Odyno Data Bus - Memory".
 
 **Step A)** Download karaf
 	
@@ -48,15 +48,15 @@ This example start Karaf OSGi container and deploy the implementation of "Odyno 
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-mem/0.0.2-SNAPSHOT
 
-**Step F)** That's all, now test it width the extra bundle
+**Step F)** That's all, now you can test it width the extra bundle
 
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 
 
 Example of usage of "Odyno DataBus - Net"
 -----------------------------------------
-This example start Karaf OSGi container and deploy the "Odyno Data Bus - Net" implementation.
-Follow the steps of last example and replace the "Step E" with the follower step
+This example starts Karaf OSGi container and deploys the "Odyno Data Bus - Net" implementation.
+Follow the steps of last example and replace the "Step E" with the following step
 
 **Step E)** Install those bundles with pax url syntax
 
@@ -64,7 +64,7 @@ Follow the steps of last example and replace the "Step E" with the follower step
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-net/0.0.1-SNAPSHOT
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 
-**Step F)** Repeat the steps into another PC. When you have finished you can tests the instances with the extra bundle
+**Step F)** Repeat the steps into another PC. When you finished you can test the instances with the extra bundle
 
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
 
