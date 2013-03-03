@@ -14,14 +14,12 @@ Build status
 
 * Master [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=master)](https://travis-ci.org/Odyno/OdynoDataBus)
 * Development [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=development)](https://travis-ci.org/Odyno/OdynoDataBus)
-* Tags 
-  ** V0.1.0 [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=V0.1.0)](https://travis-ci.org/Odyno/OdynoDataBus)
-  ** V0.1.1 [![Build Status](https://travis-ci.org/Odyno/OdynoDataBus.png?branch=V0.1.1)](https://travis-ci.org/Odyno/OdynoDataBus)
 
 
-Example of usage of "Odyno DataBus - Memory"
---------------------------------------------
+Example of usage of "Odyno DataBus - Memory" [(Video)](http://youtu.be/damaPMoM-yE)
+-------------------------------------------- 
 This example shows how to start Karaf OSGi container and to deploy the implementation of "Odyno Data Bus - Memory".
+
 
 **Step A)** Download karaf
 	
@@ -48,28 +46,28 @@ This example shows how to start Karaf OSGi container and to deploy the implement
 
 **Step E)** Install those bundles with pax url syntax
 
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-mem/0.0.2-SNAPSHOT
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-mem/0.1.1
 
 **Step F)** That's all, now you can test it width the extra bundle
 
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.1.1
 
 
-Example of usage of "Odyno DataBus - Net"
+Example of usage of "Odyno DataBus - Net" [(Video)](http://youtu.be/-zSHglHYdJ4)
 -----------------------------------------
 This example starts Karaf OSGi container and deploys the "Odyno Data Bus - Net" implementation.
 Follow the steps of last example and replace the "Step E" with the following step
 
 **Step E)** Install those bundles with pax url syntax
 
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1-SNAPSHOT
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-net/0.0.1-SNAPSHOT
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-api/0.1.1
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-net/0.1.1
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.1.1
 
 **Step F)** Repeat the steps into another PC. When you finished you can test the instances with the extra bundle
 
-	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.0.1-SNAPSHOT
+	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.1.1
 
 So, when you send data in to the bus all instance of Odyno DataBus receive the message and print it on display... That's all!
 
