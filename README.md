@@ -54,7 +54,7 @@ This example shows how to start Karaf OSGi container and to deploy the implement
 	karaf@root> install -s mvn:net.staniscia.as/odyno-databus-tools/0.1.1
 
 
-Example of usage of "Odyno DataBus - Net" [(Video)](http://youtu.be/-zSHglHYdJ4)
+Example of usage of "Odyno DataBus - Net" [(Video)](http://youtu.be/4szo0uVo-qs)
 -----------------------------------------
 This example starts Karaf OSGi container and deploys the "Odyno Data Bus - Net" implementation.
 Follow the steps of last example and replace the "Step E" with the following step
